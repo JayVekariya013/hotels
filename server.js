@@ -1,9 +1,11 @@
 const express = require("express");
 const db = require("./db");
 const app = express();
+require('dotenv').config();
 
 const bodyParser = require("body-parser");
 app.use(bodyParser.json());
+const PORT = process.env.PORT || 3000;
 
 app.get("/", function (req, res) {
   res.send("Welcome to the Hotel!");
@@ -17,6 +19,6 @@ const menuRoutes = require("./routes/menuRoutes");
 app.use("/person", personRoutes);
 app.use("/menu", menuRoutes);
 
-app.listen(3000, () => {
-  console.log("Server started at 3000");
+app.listen(PORT, () => {
+  console.log("Server started at",PORT);
 });
